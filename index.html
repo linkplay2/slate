@@ -240,6 +240,34 @@
               </ul>
           </li>
           <li>
+            <a href="#music-player-control" class="toc-h1 toc-link" data-title="Music Player Control">Music Player Control</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#play" class="toc-h2 toc-link" data-title="Play">Play</a>
+                  </li>
+                  <li>
+                    <a href="#pause" class="toc-h2 toc-link" data-title="Pause">Pause</a>
+                  </li>
+                  <li>
+                    <a href="#skip-next" class="toc-h2 toc-link" data-title="Skip/Next">Skip/Next</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#device-information" class="toc-h1 toc-link" data-title="Device Information">Device Information</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-device-status" class="toc-h2 toc-link" data-title="Get Device Status">Get Device Status</a>
+                  </li>
+                  <li>
+                    <a href="#get-wifi-information" class="toc-h2 toc-link" data-title="Get Wifi Information">Get Wifi Information</a>
+                  </li>
+                  <li>
+                    <a href="#change-device-settings" class="toc-h2 toc-link" data-title="Change Device Settings">Change Device Settings</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </div>
@@ -274,12 +302,12 @@
 <span class="p">[</span><span class="n">pool</span> <span class="nf">drain</span><span class="p">];</span>
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code>meowmeowmeow</code> with your AVS authentication key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>The Linkplay SDK enables you to login to your Amazon account in order to retrieve the AVS access token. You can register a new AVS dev account key at Amazon&#39;s<a href="https://developer.amazon.com/alexa">developer portal</a>.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Amazon Alexa expects for the API token to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code>Authorization: meowmeowmeow</code></p>
 
@@ -408,6 +436,272 @@ Remember — a happy kitten is an authenticated kitten!
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the kitten to delete</td>
+</tr>
+</tbody></table>
+<h1 id='music-player-control'>Music Player Control</h1><h2 id='play'>Play</h2><pre class="highlight java tab-java"><code><span class="k">while</span><span class="o">(</span><span class="n">all</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">val</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">all</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'0'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">;</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">all</span><span class="o">;</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="n">NSAutoreleasePool</span> <span class="o">*</span><span class="n">pool</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSAutoreleasePool</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">NSLog</span> <span class="p">(</span><span class="s">@"Hello, World!"</span><span class="p">);</span>
+<span class="p">[</span><span class="n">pool</span> <span class="nf">drain</span><span class="p">];</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all kittens.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://example.com/api/kittens</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>include_cats</td>
+<td>false</td>
+<td>If set to true, the result will also include cats.</td>
+</tr>
+<tr>
+<td>available</td>
+<td>true</td>
+<td>If set to false, the result will include kittens that have already been adopted.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
+<h2 id='pause'>Pause</h2><pre class="highlight java tab-java"><code><span class="k">while</span><span class="o">(</span><span class="n">all</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">val</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">all</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'0'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">;</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">all</span><span class="o">;</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="n">NSAutoreleasePool</span> <span class="o">*</span><span class="n">pool</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSAutoreleasePool</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">NSLog</span> <span class="p">(</span><span class="s">@"Hello, World!"</span><span class="p">);</span>
+<span class="p">[</span><span class="n">pool</span> <span class="nf">drain</span><span class="p">];</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific kitten.</p>
+
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the kitten to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='skip-next'>Skip/Next</h2><pre class="highlight java tab-java"><code><span class="k">while</span><span class="o">(</span><span class="n">all</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">val</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">all</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'0'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">;</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">all</span><span class="o">;</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="n">NSAutoreleasePool</span> <span class="o">*</span><span class="n">pool</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSAutoreleasePool</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">NSLog</span> <span class="p">(</span><span class="s">@"Hello, World!"</span><span class="p">);</span>
+<span class="p">[</span><span class="n">pool</span> <span class="nf">drain</span><span class="p">];</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific kitten.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the kitten to delete</td>
+</tr>
+</tbody></table>
+<h1 id='device-information'>Device Information</h1><h2 id='get-device-status'>Get Device Status</h2><pre class="highlight java tab-java"><code><span class="k">while</span><span class="o">(</span><span class="n">all</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">val</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">all</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'0'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">;</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">all</span><span class="o">;</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="n">NSAutoreleasePool</span> <span class="o">*</span><span class="n">pool</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSAutoreleasePool</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">NSLog</span> <span class="p">(</span><span class="s">@"Hello, World!"</span><span class="p">);</span>
+<span class="p">[</span><span class="n">pool</span> <span class="nf">drain</span><span class="p">];</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all kittens.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET http://example.com/api/kittens</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>include_cats</td>
+<td>false</td>
+<td>If set to true, the result will also include cats.</td>
+</tr>
+<tr>
+<td>available</td>
+<td>true</td>
+<td>If set to false, the result will include kittens that have already been adopted.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
+<h2 id='get-wifi-information'>Get Wifi Information</h2><pre class="highlight java tab-java"><code><span class="k">while</span><span class="o">(</span><span class="n">all</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">val</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">all</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'0'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">;</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">all</span><span class="o">;</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="n">NSAutoreleasePool</span> <span class="o">*</span><span class="n">pool</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSAutoreleasePool</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">NSLog</span> <span class="p">(</span><span class="s">@"Hello, World!"</span><span class="p">);</span>
+<span class="p">[</span><span class="n">pool</span> <span class="nf">drain</span><span class="p">];</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific kitten.</p>
+
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the kitten to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='change-device-settings'>Change Device Settings</h2><pre class="highlight java tab-java"><code><span class="k">while</span><span class="o">(</span><span class="n">all</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">val</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">all</span> <span class="o">=</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'0'</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">'1'</span><span class="o">;</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+<span class="k">return</span> <span class="n">all</span><span class="o">;</span>
+</code></pre><pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;Foundation/Foundation.h&gt;
+</span>
+<span class="n">NSAutoreleasePool</span> <span class="o">*</span><span class="n">pool</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSAutoreleasePool</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+<span class="n">NSLog</span> <span class="p">(</span><span class="s">@"Hello, World!"</span><span class="p">);</span>
+<span class="p">[</span><span class="n">pool</span> <span class="nf">drain</span><span class="p">];</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint deletes a specific kitten.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
