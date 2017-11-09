@@ -1,15 +1,13 @@
 ---
-title: SDK Reference
+title: Linkplay Mobile SDK Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - java
+  - objective_c
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='mailto:info@linkplay.com'>Have Questions or Suggestions?</a>
+  - <a href='http://linkplay.com/'>Become a Linkplay Developer</a>
 
 includes:
   - errors
@@ -19,38 +17,31 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Linkplay Mobile SDK documentation page! You can use our SDK to access various functionalities and interact with devices powered by the Linkplay A-series modules, which currenty supports wifi-setup and various content playback abilities.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in JAVA and Android and Objective C for iOS! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+This example API documentation page was created with [Linkplay](https://www.linkplay.com). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
+# AVS Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```java
+while(all && i < val.length()){
+    c = val.charAt(i);
+    all = c == '0' || c == '1';
+    i++;
+}
+return all;
 ```
 
-```python
-import kittn
+```objective_c
+#import <Foundation/Foundation.h>
 
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+NSLog (@"Hello, World!");
+[pool drain];
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
@@ -65,34 +56,24 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# Playback Control
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+## Get All Songs in Queue
+```java
+while(all && i < val.length()){
+    c = val.charAt(i);
+    all = c == '0' || c == '1';
+    i++;
+}
+return all;
 ```
 
-```python
-import kittn
+```objective_c
+#import <Foundation/Foundation.h>
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+NSLog (@"Hello, World!");
+[pool drain];
 ```
 
 > The above command returns JSON structured like this:
@@ -133,32 +114,22 @@ available | true | If set to false, the result will include kittens that have al
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+## Get Current Song
+```java
+while(all && i < val.length()){
+    c = val.charAt(i);
+    all = c == '0' || c == '1';
+    i++;
+}
+return all;
 ```
 
-```python
-import kittn
+```objective_c
+#import <Foundation/Foundation.h>
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+NSLog (@"Hello, World!");
+[pool drain];
 ```
 
 > The above command returns JSON structured like this:
@@ -187,33 +158,22 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
 
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
+## Delete a Song in Queue
+```java
+while(all && i < val.length()){
+    c = val.charAt(i);
+    all = c == '0' || c == '1';
+    i++;
+}
+return all;
 ```
 
-```python
-import kittn
+```objective_c
+#import <Foundation/Foundation.h>
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+NSLog (@"Hello, World!");
+[pool drain];
 ```
 
 > The above command returns JSON structured like this:
@@ -236,4 +196,3 @@ This endpoint deletes a specific kitten.
 Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to delete
-
